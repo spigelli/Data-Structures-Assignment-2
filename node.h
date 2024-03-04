@@ -14,6 +14,3 @@ class Node {
     // Getters and setters
     Item_Type& getData();
 };
-
-    
-
