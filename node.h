@@ -10,10 +10,9 @@ class Node {
     // Constructor
     Node(Item_Type data, Node* next);
     // Destructor
-    ~Node()
+    ~Node();
     // Getters and setters
-    Item_Type& getData()
-    void 
+    Item_Type& getData();
 };
 
     
