@@ -13,4 +13,7 @@ class Node {
     ~Node();
     // Getters and setters
     Item_Type& getData();
+    Node* getNext();
+    void setData(Item_Type data);
+    void setNext(Node* next);
 };
