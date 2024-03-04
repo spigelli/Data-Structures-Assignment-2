@@ -1,18 +1,24 @@
-# Make file for compiling just main.cpp to the target executable
-
 # Variables
 CC = g++
 CFLAGS = -Wall -Wextra -std=c++11 -g
 TARGET = main
-SOURCES = main.cpp
+SOURCES = main.cpp list.cpp node.cpp
 
-# Target: main
-# This target will compile the main.cpp file to the target executable.
-main: $(SOURCES)
-	$(CC) $(CFLAGS) $(SOURCES) -o $(TARGET)
+# Object files
+OBJECTS = $(SOURCES:.cpp=.o)
+
+# Default target
+all: $(TARGET)
+
+# Rule to link the program
+$(TARGET): $(OBJECTS)
+	$(CC) $(CFLAGS) $(OBJECTS) -o $(TARGET)
+
+# Rule to compile source files to object files
+%.o: %.cpp
+	$(CC) $(CFLAGS) -c $< -o $@
 
 # Target: clean
-# This target will remove the target executable.
 clean:
-	rm -f $(TARGET)
+	rm -f $(OBJECTS) $(TARGET)
 	rm -rf $(TARGET).dSYM

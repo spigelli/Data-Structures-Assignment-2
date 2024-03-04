@@ -1,4 +1,5 @@
 #include "node.h"
+#include <cstddef>
 
 // Header file for the List class
 template <typename Item_Type>
@@ -28,9 +29,9 @@ class List
     // Returns true if this list is empty.
     bool empty() const;
     // Insert item at position index (starting at 0). Insert at the end if index is beyond the end of the list.
-    void insert(size_t index, const Item_Type& item);
+    void insert(std::size_t index, const Item_Type& item);
     // Remove the item at position index. Return true if successful; return false if index is beyond the end of the list.
-    bool remove(size_t index);
+    bool remove(std::size_t index);
     // Return the position of the first occurrence of item if it is found. Return the size of the list if it is not found.
-    size_t find(const Item_Type& item);
+    std::size_t find(const Item_Type& item);
 };
