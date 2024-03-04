@@ -7,6 +7,7 @@
 #include <vector>
 #include <functional>
 #include <string>
+#include <cstddef>
 
 // Color codes for pretty output
 #define COLOR_GREEN "\033[32m"
@@ -32,7 +33,7 @@ class TestSuite {
 
     void run()
     {
-      int passed = 0;
+      std::size_t passed = 0;
       std::cout << "====================================" << std::endl;
       std::cout << "Running test suite: " << _suite_name << std::endl;
       for (auto &test : tests)
