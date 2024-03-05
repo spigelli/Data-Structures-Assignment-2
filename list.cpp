@@ -41,7 +41,7 @@ void List<Item_Type>::push_back(const Item_Type& item) {
     head = new Node<Item_Type>(item, nullptr);
     tail = head;
   }
-  if (!empty) {
+  if (!is_empty) {
     Node<Item_Type>* old_tail = tail;
     tail = new Node<Item_Type>(item, nullptr);
     old_tail->setNext(tail);
@@ -176,7 +176,7 @@ std::size_t List<Item_Type>::find(const Item_Type& item) {
 template<typename Item_Type>
 void List<Item_Type>::pretty_print() {
   Node<Item_Type>* current = head;
-  std::cout << "["
+  std::cout << "[";
   while (current != nullptr) {
     std::cout << current->getData() << ",";
     current = current->getNext();

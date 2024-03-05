@@ -8,7 +8,7 @@ class List
   private:
     Node<Item_Type>* head;
     Node<Item_Type>* tail;
-    int num_items;
+    std::size_t num_items;
   public:
     // Constructor
     List();
@@ -34,6 +34,6 @@ class List
     bool remove(std::size_t index);
     // Return the position of the first occurrence of item if it is found. Return the size of the list if it is not found.
     std::size_t find(const Item_Type& item);
-    // Pretty print the list inline
+    // Pretty print the list
     void pretty_print();
 };
