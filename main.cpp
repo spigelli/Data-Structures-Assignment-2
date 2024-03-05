@@ -1,4 +1,5 @@
 #include "list.cpp"
+#include "stack.cpp"
 #include "test.h"
 #include <iostream>
 using namespace std;
@@ -172,8 +173,84 @@ void test_list() {
   suite.run();
 }
 
+void test_stack() {
+  TestSuite suite = TestSuite("Stack");
+
+  suite.addTest("Stack constructor", []() {
+    Stack* stack = new Stack();
+    cout << "Stack created: ";
+    stack->pretty_print();
+    cout << endl;
+    delete stack;
+  });
+
+  suite.addTest("Push", []() {
+    cout << "Pushing 101, 202, 303" << endl;
+    Stack* stack = new Stack();
+    stack->push(101);
+    stack->push(202);
+    stack->push(303);
+    cout << "Stack after push: ";
+    stack->pretty_print();
+    cout << endl;
+    if (stack->peek_top() != 303) {
+      throw std::runtime_error("Push failed");
+    }
+    delete stack;
+  });
+
+  suite.addTest("Pop", []() {
+    Stack* stack = new Stack();
+    stack->push(101);
+    stack->push(202);
+    stack->push(303);
+    cout << "Stack before pop: ";
+    stack->pretty_print();
+    stack->pop();
+    cout << "Stack after pop: ";
+    stack->pretty_print();
+    cout << endl;
+    if (stack->peek_top() != 202) {
+      throw std::runtime_error("Pop failed");
+    }
+    delete stack;
+  });
+
+  suite.addTest("Empty", []() {
+    Stack* stack = new Stack();
+    if (!stack->empty()) {
+      throw std::runtime_error("Stack should be empty");
+    }
+    stack->push(101);
+    if (stack->empty()) {
+      throw std::runtime_error("Stack should not be empty");
+    }
+    delete stack;
+  });
+
+  suite.addTest("Average", []() {
+    cout << "Pushing 1, 2, 3, 4, 5" << endl;
+    Stack* stack = new Stack();
+    stack->push(1);
+    stack->push(2);
+    stack->push(3);
+    stack->push(4);
+    stack->push(5);
+    cout << "Stack: ";
+    stack->pretty_print();
+    cout << "Average: " << stack->average() << endl;
+    if (stack->average() != 3) {
+      throw std::runtime_error("Average failed");
+    }
+    delete stack;
+  });
+
+  suite.run();
+}
+
 int main() {
   // test_testing();
   test_list();
+  test_stack();
   return 0;
 }
