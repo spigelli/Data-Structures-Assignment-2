@@ -34,4 +34,6 @@ class List
     bool remove(std::size_t index);
     // Return the position of the first occurrence of item if it is found. Return the size of the list if it is not found.
     std::size_t find(const Item_Type& item);
+    // Pretty print the list inline
+    void pretty_print();
 };
